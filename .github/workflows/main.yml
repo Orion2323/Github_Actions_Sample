@@ -1,6 +1,9 @@
+# name of workflow
 name: github_actions_sample
+
+# event that triggers workflow
 on: [push]
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -8,12 +11,13 @@ jobs:
       - name: check repo
         uses: actions/checkout@v2
 
+        # set up python evironment
       - name: setup python
         uses: actions/setup-python@v2
         with:
-              python-version: 3.8 #install the python needed
-      - name: execute py script # run the run.py to get the latest data
+          python-version: 3.8 #install the python needed
+          
+        # run python file
+      - name: execute python file
         run: |
           python main.py
-        env: 
-          DEFAULT_BRANCH: main
